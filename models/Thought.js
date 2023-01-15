@@ -1,5 +1,6 @@
 const { Schema, model} = require('mongoose')
-const formatDate = require('../utils/format')
+const reactionSchema = require('./Reaction')
+const {formatDate} = require('../utils/format')
 
 const thoughtSchema = new Schema(
     {
@@ -11,14 +12,18 @@ const thoughtSchema = new Schema(
         },
         createdAt: {
             type: Date,
-            default: Date.now(),
+            default: Date.now,
             get: date => formatDate(date)
-            // get: date => new Intl.DateTimeFormat('en-US', { hour12: true, dayPeriod: 'short'}).format(date)
-            //timeStyle: short?
         },
+        reactions: [reactionSchema]
     }, {
+        toObject: {
+            getters: true,
+            virtuals: true
+        },
         toJSON: {
             getters: true,
+            virtuals: true
         }
     }
 )

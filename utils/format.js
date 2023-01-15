@@ -1,18 +1,17 @@
 const formatDate = (date) => {
-    console.log(date)
     // let month = date.getMonth() + 1
-
-    // if (month === 1) {
-    //     month = 'Jan'
-    // }
-    const dateString = date.toDateString()
-    const time = new Intl.DateTimeFormat('en-US', {
-        hour12: true,
-        // dayPeriod: 'short'
-        timeStyle: 'short'
+    let formattedDate = new Intl.DateTimeFormat('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
     }).format(date)
 
-    return `${dateString}`
+    let formattedTime = new Intl.DateTimeFormat('en-US', {
+        timeStyle: 'short',
+        hour12: true,
+    }).format(date)
+    
+    return `${formattedDate} at ${formattedTime}`
 }
 
 module.exports = { formatDate }
