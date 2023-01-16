@@ -1,5 +1,4 @@
 const formatDate = (date) => {
-    // let month = date.getMonth() + 1
     let formattedDate = new Intl.DateTimeFormat('en-US', {
         year: 'numeric',
         month: 'short',
