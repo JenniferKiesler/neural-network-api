@@ -7,4 +7,8 @@ router.post('/', thoughtsController.create)
 router.put('/:id', thoughtsController.update)
 router.delete('/:id', thoughtsController.delete)
 
+// add and delete reactions
+router.post('/:thoughtId/reactions', usersController.addReaction)
+router.delete('/:thoughtId/reactions/:reactionId', usersController.deleteReaction)
+
 module.exports = router
