@@ -41,4 +41,20 @@ module.exports = {
       res.status(500).json(err)
     }
   },
+  addFriend: async function(req, res) {
+    try {
+      const result = await User.findByIdAndUpdate(req.params.userId, { $push: { friends: req.params.friendId }}, { new: true })
+      res.json(result)
+    } catch(err) {
+      res.status(500).json(err)
+    }
+  },
+  deleteFriend: async function(req, res) {
+    try {
+      const result = await User.findByIdAndUpdate(req.params.userId, { $pull: { friends: req.params.friendId }}, { new: true })
+      res.json(result)
+    } catch(err) {
+      res.status(500).json(err)
+    }
+  },
 }

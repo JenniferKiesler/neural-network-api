@@ -6,5 +6,7 @@ router.get('/:id', usersController.findOne)
 router.post('/', usersController.create)
 router.put('/:id', usersController.update)
 router.delete('/:id', usersController.delete)
+router.post('/:userId/friends/:friendId', usersController.addFriend)
+router.delete('/:userId/friends/:friendId', usersController.deleteFriend)
 
 module.exports = router
