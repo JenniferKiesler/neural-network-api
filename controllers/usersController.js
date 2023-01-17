@@ -1,4 +1,4 @@
-const { User } = require('../models')
+const { User, Thought } = require('../models')
 
 module.exports = {
   create: async function(req, res) {
@@ -35,7 +35,9 @@ module.exports = {
   },
   delete: async function(req, res) {
     try {
+      const user = await User.findById(req.params.id)
       const result = await User.findByIdAndDelete(req.params.id)
+      await Thought.deleteMany({username: user.username})
       res.json(result)
     } catch(err) {
       res.status(500).json(err)
