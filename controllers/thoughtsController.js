@@ -42,4 +42,20 @@ module.exports = {
       res.status(500).json(err)
     }
   },
+  addReaction: async function(req, res) {
+    try {
+      const result = await Thought.findByIdAndUpdate(req.params.thoughtId, { $push: { reactions: req.body }}, { new: true })
+      res.json(result)
+    } catch(err) {
+      res.status(500).json(err)
+    }
+  },
+  deleteReaction: async function(req, res) {
+    try {
+      const result = await Thought.findByIdAndUpdate(req.params.thoughtId, { $pull: { reactions: {reactionID: req.params.reactionId} }}, { new: true })
+      res.json(result)
+    } catch(err) {
+      res.status(500).json(err)
+    }
+  },
 }
