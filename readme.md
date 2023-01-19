@@ -19,12 +19,14 @@ This application uses [Express.js](https://www.npmjs.com/package/express) for ro
 
 This application is invoked by using the following command: 
 ```
-npm run dev
+npm start
 ```
 
 ## Walkthrough Video
 
 Use the link below to view a walkthrough of this application (if the video is blurry, download the video).
+
+https://drive.google.com/file/d/1MRbFTvgvY1qxZLNrZG5JBLmUYCGX7dZG/view?usp=sharing
 
 ## Questions
 
